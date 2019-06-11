@@ -1,12 +1,24 @@
 import React from 'react';
 import './css/App.css';
+import TitleBar from './components/TitleBar'
 
-function App() {
-  return (
-    <div className="App">
+class App extends React.Component {
 
-    </div>
-  );
+  constructor(props){
+    super(props);
+
+    this.state = {
+      current_page: "home"
+    }
+  }
+
+  render() {
+    return(
+        <div className="App">
+          <TitleBar title={this.state.current_page}/>
+        </div>
+    )
+  }
 }
 
 export default App;
