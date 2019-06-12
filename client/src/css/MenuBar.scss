@@ -1,8 +1,5 @@
 .menu_bar {
     background-color: #343a40;
-    min-width: 100px;
-    height: auto;
-    display: flex;
 }
 
 .nav{
@@ -16,5 +13,7 @@
         color: white;
         border: 1px solid;
         width: 100%;
+        padding: 0;
+        margin: 0;
     }
 }

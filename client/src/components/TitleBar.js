@@ -1,6 +1,5 @@
 import React from 'react'
 import {Navbar} from 'reactstrap'
-import '../css/TitleBar.scss'
 
 class TitleBar extends React.Component{
   render() {

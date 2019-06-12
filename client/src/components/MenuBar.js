@@ -1,16 +1,14 @@
 import React from 'react'
 import {Nav, NavItem, NavLink} from 'reactstrap'
 
-import '../css/MenuBar.scss'
-
 class MenuBar extends React.Component{
   render() {
     return(
-      <div className="menu_bar">
+      <div className="menu_bar col-md-1 col-sm-12">
         <Nav vertical>
           <hr/>
           <NavItem>
-            <NavLink href="/">Accueuil</NavLink>
+            <NavLink href="/">Accueil</NavLink>
           </NavItem>
           <hr/>
           <NavItem>

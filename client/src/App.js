@@ -21,8 +21,12 @@ class App extends React.Component {
   render() {
     return(
         <div className="App">
-          <TitleBar title={this.state.current_page}/>
-          <div className="main_layer">
+          <div className="row">
+            <div className="col-12">
+              <TitleBar title={this.state.current_page}/>
+            </div>
+          </div>
+          <div className="main_layer row">
             <MenuBar/>
             <Router>
               <Route exact path="/" component={HomeComponent}/>
