@@ -9,16 +9,16 @@ class MenuBar extends React.Component{
       <div className="menu_bar">
         <Nav vertical>
           <NavItem>
-            <NavLink href="#">Accueuil</NavLink>
+            <NavLink href="/">Accueuil</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="#">Projets</NavLink>
+            <NavLink href="/projets">Projets</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="#">CV</NavLink>
+            <NavLink href="/cv">CV</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="#">Contact</NavLink>
+            <NavLink href="/contact">Contact</NavLink>
           </NavItem>
         </Nav>
       </div>
