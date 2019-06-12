@@ -1,11 +1,13 @@
 import React from 'react'
+import {Navbar} from 'reactstrap'
+import '../css/TitleBar.scss'
 
 class TitleBar extends React.Component{
   render() {
     return(
-      <div className="title_bar">
-        <h1>{this.props.title}</h1>
-      </div>
+      <Navbar className="title_bar" color="dark" dark expand="md">
+        <h1 color="dark">{this.props.title.toUpperCase()}</h1>
+      </Navbar>
     )
   }
 }

@@ -1,9 +1,10 @@
 import React from 'react'
+import '../../css/Content.scss'
 
 class HomeComponent extends React.Component{
   render() {
     return(
-      <div className="home">
+      <div className="content">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
           labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -11,7 +12,7 @@ class HomeComponent extends React.Component{
           dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
           officia deserunt mollit anim id est laborum.
         </p>
-        <img className="home_image" src="https://picsum.photos/300/300"/>
+        <img className="home_image" src="https://picsum.photos/300/300" alt="TODO"/>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
           labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
