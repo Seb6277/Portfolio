@@ -8,18 +8,23 @@ class MenuBar extends React.Component{
     return(
       <div className="menu_bar">
         <Nav vertical>
+          <hr/>
           <NavItem>
             <NavLink href="/">Accueuil</NavLink>
           </NavItem>
+          <hr/>
           <NavItem>
             <NavLink href="/projets">Projets</NavLink>
           </NavItem>
+          <hr/>
           <NavItem>
             <NavLink href="/cv">CV</NavLink>
           </NavItem>
+          <hr/>
           <NavItem>
             <NavLink href="/contact">Contact</NavLink>
           </NavItem>
+          <hr/>
         </Nav>
       </div>
     )

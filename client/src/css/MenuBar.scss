@@ -1,6 +1,5 @@
 .menu_bar {
     background-color: #343a40;
-    width: 10%;
     min-width: 100px;
     height: auto;
     display: flex;
@@ -12,5 +11,10 @@
     .nav-item{
         margin-top: 20px;
         margin-bottom: 20px;
+    }
+    hr{
+        color: white;
+        border: 1px solid;
+        width: 100%;
     }
 }
