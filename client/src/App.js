@@ -1,7 +1,6 @@
 import React from 'react';
 import './css/App.scss';
 import TitleBar from './components/TitleBar'
-import MenuBar from './components/MenuBar'
 import HomeComponent from './components/home/HomeComponent'
 import ProjetComponent from './components/projet/ProjetComponent'
 import CvComponent from './components/cv/CvComponent'
@@ -21,13 +20,8 @@ class App extends React.Component {
   render() {
     return(
         <div className="App">
-          <div className="row">
-            <div className="col-12">
-              <TitleBar title={this.state.current_page}/>
-            </div>
-          </div>
+          <TitleBar title={this.state.current_page}/>
           <div className="main_layer row">
-            <MenuBar/>
             <Router>
               <Route exact path="/" component={HomeComponent}/>
               <Route path="/projets" component={ProjetComponent}/>
