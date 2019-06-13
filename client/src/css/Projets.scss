@@ -1,0 +1,41 @@
+.projet_frame{
+  p{
+    text-align: center;
+    margin-top: 30px;
+  }
+}
+
+.carousel{
+  margin-top: 30px;
+  .carousel-inner{
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px grey;
+  }
+}
+
+@media screen and (max-width: 640px){
+  .projet_frame{
+    p{
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+
+  .carousel{
+    margin: 0;
+    .carousel-inner{
+      border-radius: 0;
+      box-shadow: none;
+      .carousel-item{
+        height: 500px;
+        img{
+          height: 100% !important;
+          width: auto !important;
+        }
+      }
+    }
+    .carousel-caption{
+      display: block !important;
+    }
+  }
+}

@@ -1,7 +1,6 @@
 import React from 'react';
 import './css/App.scss';
 import TitleBar from './components/TitleBar'
-import MenuBar from './components/MenuBar'
 import HomeComponent from './components/home/HomeComponent'
 import ProjetComponent from './components/projet/ProjetComponent'
 import CvComponent from './components/cv/CvComponent'
@@ -22,8 +21,7 @@ class App extends React.Component {
     return(
         <div className="App">
           <TitleBar title={this.state.current_page}/>
-          <div className="main_layer">
-            <MenuBar/>
+          <div className="main_layer row">
             <Router>
               <Route exact path="/" component={HomeComponent}/>
               <Route path="/projets" component={ProjetComponent}/>
