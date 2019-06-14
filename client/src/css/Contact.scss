@@ -1,0 +1,10 @@
+.contact_frame{
+  text-align: center;
+}
+
+@media screen and (max-width: 640px){
+  .contact_frame{
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
