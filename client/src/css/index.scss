@@ -1,0 +1,15 @@
+/*******************************
+* One file per components
+* imported and mounted in index
+*******************************/
+
+@import "App";
+@import "Home";
+@import "MenuBar";
+@import "Projets";
+@import "Cv";
+@import "Contact.scss";
+
+h1{
+  margin: 30px;
+}

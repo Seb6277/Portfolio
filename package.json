@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/Seb6277/portfolio/issues"
   },
-  "homepage": "https://github.com/Seb6277/portfolio#readme"
+  "homepage": "https://github.com/Seb6277/portfolio#readme",
+  "dependencies": {}
 }
