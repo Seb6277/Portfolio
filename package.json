@@ -4,7 +4,11 @@
   "description": "personnal portfolio",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "serve": "nodemon server.js",
+    "install-client": "npm install --prefix=client",
+    "client": "npm start --prefix=client",
+    "dev": "concurrently \"npm run serve\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -16,5 +20,13 @@
     "url": "https://github.com/Seb6277/portfolio/issues"
   },
   "homepage": "https://github.com/Seb6277/portfolio#readme",
-  "dependencies": {}
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.5.15"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.19.1"
+  }
 }

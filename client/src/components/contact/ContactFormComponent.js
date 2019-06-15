@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button, FormGroup, Form, Label, Input, FormText} from 'reactstrap'
+import {Button, FormGroup, Form, Label, Input} from 'reactstrap'
 
 class ContactFormComponent extends React.Component{
   render() {
