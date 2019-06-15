@@ -33,6 +33,28 @@ App.get("/", function (req, res) {
   })
 });
 
+App.post("/create", function (req, res) {
+  if ((req.body.src !== null) && (req.body.header !== null)){
+    const newProject = new Project({
+      "src": req.body.src,
+      "caption": req.body.caption,
+      "header": req.body.header
+    });
+    newProject.save().then((item) => {
+      res.status(201).json(item).end();
+    }).catch(error => {
+      console.log(error);
+      res.status(500).end();
+    })
+  }
+});
+
+App.delete("/delete", function (req, res) {
+  Project.findById(req.body.id)
+    .then(item => item.remove().then(res.json({success: true})))
+    .catch(err => res.status(500).then(res.json({success: false})))
+});
+
 App.listen(port, () => {
   console.log(`server listening on port ${port}`)
 });
