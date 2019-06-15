@@ -15,22 +15,19 @@ class ProjetComponent extends React.Component{
 
     // Creating structure of fake data
     this.state = {
-      projects: [{
-        src: "https://picsum.photos/1920/1080",
-        caption: lorem,
-        header: "Projet1"
-      }, {
-        src: "https://picsum.photos/1920/1080",
-        caption: lorem,
-        header: "Projet2"
-      }]
+      projects: []
     }
   }
 
-  render() {
-    // Debug Log... Is my state beautiful ??
-    console.log(this.state)
+  componentDidMount() {
+    fetch('http://localhost:4000/').then(response => {
+      return response.json()
+    }).then(data => {
+      this.setState({projects: data})
+    })
+  }
 
+  render() {
     return(
         <div className="projet_frame col-sm-12 col-md-8 offset-md-2">
           <p>
