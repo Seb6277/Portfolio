@@ -52,7 +52,7 @@ App.post("/create", function (req, res) {
 App.delete("/delete", function (req, res) {
   Project.findById(req.body.id)
     .then(item => item.remove().then(res.json({success: true})))
-    .catch(err => res.status(500).then(res.json({success: false})))
+    .catch(() => res.status(500).json({success: false}))
 });
 
 App.listen(port, () => {
