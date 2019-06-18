@@ -1,6 +1,7 @@
 import React from 'react'
 import {Button, FormGroup, Form, Label, Input} from 'reactstrap'
 import * as emailjs from 'emailjs-com'
+import ReCAPTCHA from 'react-google-recaptcha'
 
 class ContactFormComponent extends React.Component{
   constructor(props){
@@ -10,17 +11,18 @@ class ContactFormComponent extends React.Component{
       senderEmail: "",
       message_html: "",
       emailValid: false,
-      validMessage: false
+      validMessage: false,
+      captchaValid: false
     };
   }
 
   handleMailChange(mail) {
-    this.setState({senderEmail: mail})
+    this.setState({senderEmail: mail});
     this.emailFieldIsValid()
   }
 
   handleMessageChange(message) {
-    this.setState({message_html: message})
+    this.setState({message_html: message});
     this.messageFieldIsValid()
   }
 
@@ -59,6 +61,10 @@ class ContactFormComponent extends React.Component{
 
   };
 
+  onCaptchaChange() {
+    this.setState({captchaValid: true})
+  }
+
   render() {
     return(
       <Form className="contact_form col-md-10 offset-md-1 col-sm-10 offset-sm-1">
@@ -82,7 +88,13 @@ class ContactFormComponent extends React.Component{
             valid={this.state.validMessage}
           />
         </FormGroup>
-        <Button onClick={(e) => this.handleSubmit(e)}>Envoyer</Button>
+        <div className="captcha col-md-6 offset-md-2">
+          <ReCAPTCHA
+            sitekey={process.env.REACT_APP_RECAPTCHA}
+            onChange={() => this.onCaptchaChange()}
+          />
+        </div>
+        <Button onClick={(e) => this.handleSubmit(e)} disabled={!this.state.captchaValid}>Envoyer</Button>
       </Form>
     )
   }
