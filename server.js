@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const projectSchema = require('./schema/projectSchema');
 
 const App = express();
-const port = 4000;
+const port = 1337;
 
 // MongoDB database address
 const database = 'mongodb://localhost:27017/portfolio';
