@@ -12,7 +12,8 @@ class ContactFormComponent extends React.Component{
       message_html: "",
       emailValid: false,
       validMessage: false,
-      captchaValid: false
+      captchaValid: false,
+      toggleTextError: false
     };
   }
 
@@ -56,7 +57,7 @@ class ContactFormComponent extends React.Component{
         })
     } else {
       // Field are not valid input
-      alert('Please verify your mail and message')
+      this.setState({toggleTextError: !this.state.toggleTextError})
     }
 
   };
@@ -66,6 +67,13 @@ class ContactFormComponent extends React.Component{
   }
 
   render() {
+    let textError = null;
+    if (this.state.toggleTextError) {
+      textError = <Label className="textError">Text must be at least 10 character long.</Label>
+    } else {
+      textError = null
+    }
+
     return(
       <Form className="contact_form col-md-10 offset-md-1 col-sm-10 offset-sm-1">
         <FormGroup>
@@ -87,6 +95,7 @@ class ContactFormComponent extends React.Component{
             onChange={(e) => this.handleMessageChange(e.target.value)}
             valid={this.state.validMessage}
           />
+          {textError}
         </FormGroup>
         <div className="captcha col-md-6 offset-md-2">
           <ReCAPTCHA
