@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -6,13 +7,10 @@ const projectSchema = require('./schema/projectSchema');
 const App = express();
 const port = 1337;
 
-// MongoDB database address
-const database = 'mongodb://localhost:27017/portfolio';
-
 // Compiling data Schema
 const Project = mongoose.model('Project', projectSchema);
 
-mongoose.connect(database, {useNewUrlParser: true}).then(() => {
+mongoose.connect(process.env.MONGODB_URL, {useNewUrlParser: true}).then(() => {
   console.log('connected to mongodb')
   }).catch((err) => {
   console.log(err)
