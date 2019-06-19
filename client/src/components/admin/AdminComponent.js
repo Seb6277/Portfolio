@@ -1,14 +1,32 @@
 import React from 'react'
 import {Button, Form, FormGroup, Input, Label} from "reactstrap";
+import FileBase64 from 'react-file-base64'
+import ExistingProjectComponent from './ExistingProjectComponent'
 
 class AdminComponent extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      projects: []
+    }
+
+    this.handleDeleteClick.bind(this)
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:1337/').then(response => {
+      return response.json()
+    }).then(data => {
+      this.setState({projects: data})
+    })
+  }
 
   projectToSave = {
     caption: "",
     header: "",
     src: ""
   };
-  cvUrl = "";
 
   handleNameChange(newHeader) {
     this.projectToSave.header = newHeader;
@@ -18,21 +36,42 @@ class AdminComponent extends React.Component {
     this.projectToSave.caption = newCaption;
   }
 
-  handleImageChange(newSrc) {
-    this.projectToSave.src = newSrc;
+  getBaseImage(file) {
+    if (file.type === "image/png" || file.type === "image/jpg") {
+      this.projectToSave.src = file.base64
+    }
   }
 
-  handleCvChange(newCv) {
-    this.cvUrl = newCv;
+  handleProjectClick = (e) => {
+    fetch('http://localhost:1337/create', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        src: this.projectToSave.src,
+        caption: this.projectToSave.caption,
+        header: this.projectToSave.header
+      })
+    }).catch(function (error) {
+      console.log(error)
+    })
+  };
+
+  handleDeleteClick = (id) => {
+    fetch('http://localhost:1337/delete', {
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        id: id
+      })
+    }).then(() => {
+      const projects = [...this.state.projects]
+      const index = projects.findIndex((project) => project._id === id)
+      projects.splice(index, 1)
+      this.setState({projects: projects})
+    }).catch((error) => {
+      console.log(error)
+    })
   }
-
-  handleProjectClick = () => {
-    console.log(this.projectToSave)
-  };
-
-  handleCvClick = () => {
-    console.log(this.cvUrl)
-  };
 
   render() {
     return(
@@ -58,30 +97,24 @@ class AdminComponent extends React.Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="project_image">Image du projet :</Label>
-            <Input
-              type="file"
-              name="project_image"
-              id="project_image"
-              onChange={(e) => this.handleImageChange(e.target.value)}
-            />
+            <Label for="project_image">Image du projet :</Label><br/>
+            <div className="filUpload btn btn-primary">
+              <FileBase64
+                type="file"
+                name="project_image"
+                id="project_image"
+                multiple={false}
+                onDone={this.getBaseImage.bind(this)}
+              />
+            </div>
           </FormGroup>
-          <Button onClick={this.handleProjectClick}>Envoyer</Button>
+          <Button className="submit_project" type="submit" onClick={(e) => this.handleProjectClick(e)}>Envoyer</Button>
         </Form>
         <hr/>
-        <h2>Changer de cv</h2>
-        <Form className="cv_form">
-          <FormGroup>
-            <Label for="cv_upload">Nouveau CV :</Label><br/>
-            <input
-              type="file"
-              name="cv_upload"
-              id="cv_upload"
-              onChange={(e) => this.handleCvChange(e.target.value)}
-            />
-          </FormGroup>
-          <Button onClick={this.handleCvClick}>Envoyer</Button>
-        </Form>
+        <h2>Supprimer un projet</h2>
+        {this.state.projects.map(({_id, header}) => (
+          <ExistingProjectComponent key={_id} name={header} id={_id} deleteAction={this.handleDeleteClick}/>
+        ))}
       </div>
     )
   }

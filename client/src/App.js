@@ -5,7 +5,9 @@ import HomeComponent from './components/home/HomeComponent'
 import ProjetComponent from './components/projet/ProjetComponent'
 import CvComponent from './components/cv/CvComponent'
 import ContactComponent from './components/contact/ContactComponent'
+import Login from './components/login/Login'
 import AdminComponent from './components/admin/AdminComponent'
+import {PrivateRoute} from './components/login/PrivateRoute'
 import {BrowserRouter as Router, Route} from "react-router-dom";
 
 class App extends React.Component {
@@ -20,7 +22,8 @@ class App extends React.Component {
               <Route path="/projets" component={ProjetComponent}/>
               <Route path="/cv" component={CvComponent}/>
               <Route path="/contact" component={ContactComponent}/>
-              <Route path="/admin" component={AdminComponent}/>
+              <Route path="/login" component={Login}/>
+              <PrivateRoute exact path="/admin" component={AdminComponent}/>
             </Router>
           </div>
         </div>
