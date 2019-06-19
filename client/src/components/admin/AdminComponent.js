@@ -1,8 +1,26 @@
 import React from 'react'
 import {Button, Form, FormGroup, Input, Label} from "reactstrap";
 import FileBase64 from 'react-file-base64'
+import ExistingProjectComponent from './ExistingProjectComponent'
 
 class AdminComponent extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      projects: []
+    }
+
+    this.handleDeleteClick.bind(this)
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:1337/').then(response => {
+      return response.json()
+    }).then(data => {
+      this.setState({projects: data})
+    })
+  }
 
   projectToSave = {
     caption: "",
@@ -38,6 +56,23 @@ class AdminComponent extends React.Component {
     })
   };
 
+  handleDeleteClick = (id) => {
+    fetch('http://localhost:1337/delete', {
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        id: id
+      })
+    }).then(() => {
+      const projects = [...this.state.projects]
+      const index = projects.findIndex((project) => project._id === id)
+      projects.splice(index, 1)
+      this.setState({projects: projects})
+    }).catch((error) => {
+      console.log(error)
+    })
+  }
+
   render() {
     return(
       <div className="admin_frame col-md-8 offset-md-2">
@@ -62,17 +97,24 @@ class AdminComponent extends React.Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="project_image">Image du projet :</Label>
-            <FileBase64
-              type="file"
-              name="project_image"
-              id="project_image"
-              multiple={false}
-              onDone={this.getBaseImage.bind(this)}
-            />
+            <Label for="project_image">Image du projet :</Label><br/>
+            <div className="filUpload btn btn-primary">
+              <FileBase64
+                type="file"
+                name="project_image"
+                id="project_image"
+                multiple={false}
+                onDone={this.getBaseImage.bind(this)}
+              />
+            </div>
           </FormGroup>
-          <Button type="submit" onClick={(e) => this.handleProjectClick(e)}>Envoyer</Button>
+          <Button className="submit_project" type="submit" onClick={(e) => this.handleProjectClick(e)}>Envoyer</Button>
         </Form>
+        <hr/>
+        <h2>Supprimer un projet</h2>
+        {this.state.projects.map(({_id, header}) => (
+          <ExistingProjectComponent key={_id} name={header} id={_id} deleteAction={this.handleDeleteClick}/>
+        ))}
       </div>
     )
   }
