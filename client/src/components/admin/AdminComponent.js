@@ -1,5 +1,6 @@
 import React from 'react'
 import {Button, Form, FormGroup, Input, Label} from "reactstrap";
+import FileBase64 from 'react-file-base64'
 
 class AdminComponent extends React.Component {
 
@@ -8,7 +9,6 @@ class AdminComponent extends React.Component {
     header: "",
     src: ""
   };
-  cvUrl = "";
 
   handleNameChange(newHeader) {
     this.projectToSave.header = newHeader;
@@ -18,20 +18,24 @@ class AdminComponent extends React.Component {
     this.projectToSave.caption = newCaption;
   }
 
-  handleImageChange(newSrc) {
-    this.projectToSave.src = newSrc;
+  getBaseImage(file) {
+    if (file.type === "image/png" || file.type === "image/jpg") {
+      this.projectToSave.src = file.base64
+    }
   }
 
-  handleCvChange(newCv) {
-    this.cvUrl = newCv;
-  }
-
-  handleProjectClick = () => {
-    console.log(this.projectToSave)
-  };
-
-  handleCvClick = () => {
-    console.log(this.cvUrl)
+  handleProjectClick = (e) => {
+    fetch('http://localhost:1337/create', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        src: this.projectToSave.src,
+        caption: this.projectToSave.caption,
+        header: this.projectToSave.header
+      })
+    }).catch(function (error) {
+      console.log(error)
+    })
   };
 
   render() {
@@ -59,28 +63,15 @@ class AdminComponent extends React.Component {
           </FormGroup>
           <FormGroup>
             <Label for="project_image">Image du projet :</Label>
-            <Input
+            <FileBase64
               type="file"
               name="project_image"
               id="project_image"
-              onChange={(e) => this.handleImageChange(e.target.value)}
+              multiple={false}
+              onDone={this.getBaseImage.bind(this)}
             />
           </FormGroup>
-          <Button onClick={this.handleProjectClick}>Envoyer</Button>
-        </Form>
-        <hr/>
-        <h2>Changer de cv</h2>
-        <Form className="cv_form">
-          <FormGroup>
-            <Label for="cv_upload">Nouveau CV :</Label><br/>
-            <input
-              type="file"
-              name="cv_upload"
-              id="cv_upload"
-              onChange={(e) => this.handleCvChange(e.target.value)}
-            />
-          </FormGroup>
-          <Button onClick={this.handleCvClick}>Envoyer</Button>
+          <Button type="submit" onClick={(e) => this.handleProjectClick(e)}>Envoyer</Button>
         </Form>
       </div>
     )
