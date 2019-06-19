@@ -10,7 +10,7 @@ const port = 1337;
 // Compiling data Schema
 const Project = mongoose.model('Project', projectSchema);
 
-mongoose.connect(process.env.MONGODB_URL, {dbName: "portfolio"}).then(() => {
+mongoose.connect(process.env.MONGODB_URL, {dbName: "portfolio", useNewUrlParser: true}).then(() => {
   console.log('connected to mongodb')
   }).catch((err) => {
   console.log(err)

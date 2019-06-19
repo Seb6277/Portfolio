@@ -10,6 +10,13 @@
   .carousel-inner{
     border-radius: 10px;
     box-shadow: 5px 5px 5px grey;
+    .carousel-item{
+      height: 500px;
+      img{
+        height: 100%;
+        width: auto;
+      }
+    }
   }
 }
 
