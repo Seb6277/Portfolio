@@ -12,7 +12,7 @@ class ProjetComponent extends React.Component{
   }
 
   async componentDidMount() {
-    await fetch('http://localhost:5000/api').then(response => {
+    await fetch('/api/projects/get').then(response => {
       return response.json()
     }).then(data => {
       this.setState({projects: data})

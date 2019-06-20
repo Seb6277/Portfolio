@@ -15,7 +15,7 @@ class AdminComponent extends React.Component {
   }
 
   async componentDidMount() {
-    await fetch('http://localhost:5000/api').then(response => {
+    await fetch('/api/projects/get').then(response => {
       return response.json()
     }).then(data => {
       this.setState({projects: data})
@@ -47,7 +47,7 @@ class AdminComponent extends React.Component {
 
   handleProjectClick = async (e) => {
     e.preventDefault()
-    await fetch('http://localhost:5000/create', {
+    await fetch('/api/projects/create', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -64,7 +64,7 @@ class AdminComponent extends React.Component {
   };
 
   handleDeleteClick = (id) => {
-    fetch('http://localhost:5000/delete', {
+    fetch('/api/projects/delete', {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
