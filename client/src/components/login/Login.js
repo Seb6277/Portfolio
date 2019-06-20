@@ -46,6 +46,7 @@ class Login extends React.Component {
   render() {
     return(
       <div className="Login col-md-8 offset-md-2">
+        <h1>Login</h1>
         <Form>
           <FormGroup>
             <Label for="email">Email :</Label><br/>

@@ -1,13 +1,6 @@
 import React from 'react'
 import {UncontrolledCarousel} from 'reactstrap'
 
-// Fake data to delete once API fetch is working
-const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n" +
-  "          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n" +
-  "          aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum\n" +
-  "          dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui\n" +
-  "          officia deserunt mollit anim id est laborum."
-
 class ProjetComponent extends React.Component{
 
   constructor(props){
@@ -30,10 +23,16 @@ class ProjetComponent extends React.Component{
   render() {
     return(
         <div className="projet_frame col-sm-12 col-md-8 offset-md-2">
+          <h1>Projets</h1>
           <p>
-            {lorem}
+            Ci-dessous vous trouverez un bréve description de chaque projet ainsi que la liste des liens direct vers ses derniers.
           </p>
-          <UncontrolledCarousel items={this.state.projects} autoPlay={false}/>
+          <UncontrolledCarousel items={this.state.projects} interval={0} autoPlay={false}/>
+          <div className="button_link">
+            {this.state.projects.map((project) => (
+              <a key={project._id} className="btn btn-secondary" href={project.url}>{project.header}</a>
+            ))}
+          </div>
         </div>
     )
   }

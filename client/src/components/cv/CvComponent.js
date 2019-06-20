@@ -8,9 +8,7 @@ class CvComponent extends React.Component{
       <div className="cv_frame col-md-8 offset-md-2">
         <h1>CV</h1>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, aliquid, asperiores assumenda corporis
-          cupiditate debitis dolorem ducimus eaque eum ipsa laudantium magnam, neque nulla quis quo recusandae
-          reprehenderit vel veniam.
+          Vous pouvez télécharger mon CV par le liens ci-dessous:
         </p>
         <a href={Cv}><img src={downloadLogo} alt="TODO"/></a>
       </div>

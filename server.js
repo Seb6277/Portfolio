@@ -16,8 +16,8 @@ mongoose.connect(process.env.MONGODB_URL, {dbName: "portfolio", useNewUrlParser:
   console.log(err)
 });
 
-App.use(bodyParser.json());
-App.use(bodyParser.urlencoded({extended: true}));
+App.use(bodyParser.json({limit: "50mb", extended: true}));
+App.use(bodyParser.urlencoded({limit: "50mb", extended: true}));
 
 // Define CORS
 App.use(function (req, res, next) {
@@ -44,7 +44,8 @@ App.post("/create", function (req, res) {
     const newProject = new Project({
       "src": req.body.src,
       "caption": req.body.caption,
-      "header": req.body.header
+      "header": req.body.header,
+      "url": req.body.url
     });
     newProject.save().then((item) => {
       res.status(201).json(item).end();
