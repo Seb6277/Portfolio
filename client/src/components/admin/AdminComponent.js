@@ -42,13 +42,12 @@ class AdminComponent extends React.Component {
   }
 
   getBaseImage(file) {
-    if (file.type === "image/png" || file.type === "image/jpg") {
-      this.projectToSave.src = file.base64
-    }
+    this.projectToSave.src = file.base64
   }
 
-  handleProjectClick = (e) => {
-    fetch('http://localhost:1337/create', {
+  handleProjectClick = async (e) => {
+    e.preventDefault()
+    await fetch('http://localhost:1337/create', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -57,6 +56,8 @@ class AdminComponent extends React.Component {
         header: this.projectToSave.header,
         url: this.projectToSave.url
       })
+    }).then(() => {
+      document.location.href="/admin"
     }).catch(function (error) {
       console.log(error)
     })

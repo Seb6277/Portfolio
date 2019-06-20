@@ -29,7 +29,7 @@ class App extends React.Component {
           </div>
           <div className="footer_row page-footer row">
             <footer className="footer row col-md-8 offset-md-2">
-              <a className="github col-md-4 offset-md-3 row" href="https://github.com/Seb6277" target="_blank">
+              <a className="github col-md-4 offset-md-3 row" href="https://github.com/Seb6277" target="_blank" rel="noreferrer noopener">
                 <div className="git-icon">
                   <FaGithub/>
                 </div>
@@ -37,7 +37,7 @@ class App extends React.Component {
                   <p>Follow me on Github</p>
                 </div>
               </a>
-              <a className="twitter col-md-4 row" href="https://twitter.com/seb6277" target="_blank">
+              <a className="twitter col-md-4 row" href="https://twitter.com/seb6277" target="_blank" rel="noreferrer noopener">
                 <div className="twitter-icon">
                   <FaTwitter/>
                 </div>

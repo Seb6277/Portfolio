@@ -36,7 +36,7 @@ class ProjetComponent extends React.Component{
           <UncontrolledCarousel items={this.state.projects} interval={0} autoPlay={false}/>
           <div className="button_link">
             {this.state.projects.map((project) => (
-              <a className="btn btn-secondary" href={project.url}>{project.header}</a>
+              <a key={project._id} className="btn btn-secondary" href={project.url}>{project.header}</a>
             ))}
           </div>
         </div>
