@@ -6,7 +6,7 @@ const projectSchema = require('./schema/projectSchema');
 const path = require('path');
 
 const App = express();
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 1337;
 
 // Compiling data Schema
 const Project = mongoose.model('Project', projectSchema);
@@ -64,7 +64,7 @@ App.delete("/delete", function (req, res) {
     .catch(() => res.status(500).json({success: false}))
 });
 
-App.get('*', (req, res) => {
+Serv.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"))
 });
 
