@@ -6,14 +6,13 @@ class ProjetComponent extends React.Component{
   constructor(props){
     super(props)
 
-    // Creating structure of fake data
     this.state = {
       projects: []
     }
   }
 
-  componentDidMount() {
-    fetch('http://localhost:80/api').then(response => {
+  async componentDidMount() {
+    await fetch('https://localhost:8000/api').then(response => {
       return response.json()
     }).then(data => {
       this.setState({projects: data})
