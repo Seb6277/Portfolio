@@ -13,7 +13,7 @@ class ProjetComponent extends React.Component{
   }
 
   componentDidMount() {
-    fetch('https://portfolioseb.herokuapp.com:8000/api').then(response => {
+    fetch('https://portfolioseb.herokuapp.com:8080/api').then(response => {
       return response.json()
     }).then(data => {
       this.setState({projects: data})

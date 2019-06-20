@@ -6,7 +6,7 @@ const projectSchema = require('./schema/projectSchema');
 const path = require('path');
 
 const App = express();
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 8080;
 
 // Compiling data Schema
 const Project = mongoose.model('Project', projectSchema);

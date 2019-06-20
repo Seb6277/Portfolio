@@ -22,7 +22,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "https://portfolioseb.herokuapp.com:8000",
+  "proxy": "https://portfolioseb.herokuapp.com:8080",
   "eslintConfig": {
     "extends": "react-app"
   },
