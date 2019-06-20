@@ -15,7 +15,7 @@ class AdminComponent extends React.Component {
   }
 
   componentDidMount() {
-    fetch('https://portfolioseb.herokuapp.com:8080/api').then(response => {
+    fetch('http://localhost:80/api').then(response => {
       return response.json()
     }).then(data => {
       this.setState({projects: data})
@@ -47,7 +47,7 @@ class AdminComponent extends React.Component {
 
   handleProjectClick = async (e) => {
     e.preventDefault()
-    await fetch('https://portfolioseb.herokuapp.com:8080/create', {
+    await fetch('http://localhost:80/create', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -64,7 +64,7 @@ class AdminComponent extends React.Component {
   };
 
   handleDeleteClick = (id) => {
-    fetch('https://portfolioseb.herokuapp.com:8080/delete', {
+    fetch('http://localhost:80/delete', {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
