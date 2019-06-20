@@ -2,6 +2,7 @@ import React from 'react'
 import {Button, Form, FormGroup, Input, Label} from "reactstrap";
 import FileBase64 from 'react-file-base64'
 import ExistingProjectComponent from './ExistingProjectComponent'
+import axios from 'axios'
 
 class AdminComponent extends React.Component {
   constructor(props) {
@@ -14,11 +15,9 @@ class AdminComponent extends React.Component {
     this.handleDeleteClick.bind(this)
   }
 
-  async componentDidMount() {
-    await fetch('/api/projects/get').then(response => {
-      return response.json()
-    }).then(data => {
-      this.setState({projects: data})
+  componentDidMount() {
+    axios.get('/api/projects/get').then(response => {
+      this.setState({projects: response.data})
     })
   }
 
@@ -47,16 +46,14 @@ class AdminComponent extends React.Component {
 
   handleProjectClick = async (e) => {
     e.preventDefault()
-    await fetch('/api/projects/create', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
+    await axios.post('/api/projects/create',
+      {
         src: this.projectToSave.src,
         caption: this.projectToSave.caption,
         header: this.projectToSave.header,
         url: this.projectToSave.url
-      })
-    }).then(() => {
+      }
+    ).then(() => {
       document.location.href="/admin"
     }).catch(function (error) {
       console.log(error)
@@ -64,13 +61,7 @@ class AdminComponent extends React.Component {
   };
 
   handleDeleteClick = (id) => {
-    fetch('/api/projects/delete', {
-      method: 'DELETE',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        id: id
-      })
-    }).then(() => {
+    axios.delete(`/api/projects/${id}`).then(() => {
       const projects = [...this.state.projects]
       const index = projects.findIndex((project) => project._id === id)
       projects.splice(index, 1)

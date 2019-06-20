@@ -1,5 +1,6 @@
 import React from 'react'
 import {UncontrolledCarousel} from 'reactstrap'
+import axios from 'axios'
 
 class ProjetComponent extends React.Component{
 
@@ -11,11 +12,9 @@ class ProjetComponent extends React.Component{
     }
   }
 
-  async componentDidMount() {
-    await fetch('/api/projects/get').then(response => {
-      return response.json()
-    }).then(data => {
-      this.setState({projects: data})
+  componentDidMount() {
+    axios.get('/api/projects/get').then(response => {
+      this.setState({projects: response.data})
     })
   }
 

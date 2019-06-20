@@ -33,8 +33,8 @@ router.post("/create", function (req, res) {
   }
 });
 
-router.delete("/delete", function (req, res) {
-  Projects.findById(req.body.id)
+router.delete("/:id", function (req, res) {
+  Projects.findById(req.params.id)
     .then(item => item.remove().then(res.json({success: true})))
     .catch(() => res.status(500).json({success: false}))
 });
