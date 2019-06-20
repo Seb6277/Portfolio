@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "personnal portfolio",
   "main": "server.js",
   "scripts": {
@@ -8,7 +8,8 @@
     "serve": "nodemon server.js",
     "install-client": "npm install --prefix=client",
     "client": "npm start --prefix=client",
-    "dev": "concurrently \"npm run serve\" \"npm run client\""
+    "dev": "concurrently \"npm run serve\" \"npm run client\"",
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
@@ -29,5 +30,8 @@
   "devDependencies": {
     "concurrently": "^4.1.0",
     "nodemon": "^1.19.1"
+  },
+  "engines": {
+    "node": "10.15.3"
   }
 }
