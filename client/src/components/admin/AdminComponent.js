@@ -15,7 +15,7 @@ class AdminComponent extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:1337/').then(response => {
+    fetch('http://localhost:8000/api').then(response => {
       return response.json()
     }).then(data => {
       this.setState({projects: data})
@@ -25,7 +25,8 @@ class AdminComponent extends React.Component {
   projectToSave = {
     caption: "",
     header: "",
-    src: ""
+    src: "",
+    url: ""
   };
 
   handleNameChange(newHeader) {
@@ -36,28 +37,34 @@ class AdminComponent extends React.Component {
     this.projectToSave.caption = newCaption;
   }
 
-  getBaseImage(file) {
-    if (file.type === "image/png" || file.type === "image/jpg") {
-      this.projectToSave.src = file.base64
-    }
+  handleUrlChange(newUrl) {
+    this.projectToSave.url = newUrl;
   }
 
-  handleProjectClick = (e) => {
-    fetch('http://localhost:1337/create', {
+  getBaseImage(file) {
+    this.projectToSave.src = file.base64
+  }
+
+  handleProjectClick = async (e) => {
+    e.preventDefault()
+    await fetch('http://localhost:8000/create', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         src: this.projectToSave.src,
         caption: this.projectToSave.caption,
-        header: this.projectToSave.header
+        header: this.projectToSave.header,
+        url: this.projectToSave.url
       })
+    }).then(() => {
+      document.location.href="/admin"
     }).catch(function (error) {
       console.log(error)
     })
   };
 
   handleDeleteClick = (id) => {
-    fetch('http://localhost:1337/delete', {
+    fetch('http://localhost:8000/delete', {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -76,6 +83,7 @@ class AdminComponent extends React.Component {
   render() {
     return(
       <div className="admin_frame col-md-8 offset-md-2">
+        <h1>Administration</h1>
         <h2>Créer un projet</h2>
         <Form className="admin_form">
           <FormGroup>
@@ -94,6 +102,15 @@ class AdminComponent extends React.Component {
               name="project_description"
               id="project_description"
               onChange={(e) => this.handleDescriptionChange(e.target.value)}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="project_url">Url du projet :</Label>
+            <Input
+              type="text"
+              name="project_url"
+              id="project_url"
+              onChange={(e) => this.handleUrlChange(e.target.value)}
             />
           </FormGroup>
           <FormGroup>

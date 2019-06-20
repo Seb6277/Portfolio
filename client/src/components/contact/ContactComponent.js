@@ -7,9 +7,9 @@ class ContactComponent extends React.Component{
       <div className="contact_frame col-md-8 offset-md-2">
         <h1>Contact</h1>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, cumque
-          dolorum eaque earum eligendi fuga, id illum omnis placeat praesentium quas
-          repudiandae sequi sint unde vel. Corporis earum itaque sit.
+          Une question ? Une demande ? Ou juste parlé de la météo ?<br/>
+          C'est ici que ça se passe !<br/><br/>
+          Merci de correctement renseigner votre email
         </p>
         <ContactFormComponent/>
       </div>

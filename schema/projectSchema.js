@@ -13,6 +13,10 @@ module.exports = new mongoose.Schema({
     required: true,
     unique: true
   },
+  "url": {
+    type: String,
+    required: true
+  },
   "createdAt": {type: String,
     required: true,
     default: Date.now()
