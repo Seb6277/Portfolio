@@ -44,7 +44,8 @@ App.post("/create", function (req, res) {
     const newProject = new Project({
       "src": req.body.src,
       "caption": req.body.caption,
-      "header": req.body.header
+      "header": req.body.header,
+      "url": req.body.url
     });
     newProject.save().then((item) => {
       res.status(201).json(item).end();

@@ -25,7 +25,8 @@ class AdminComponent extends React.Component {
   projectToSave = {
     caption: "",
     header: "",
-    src: ""
+    src: "",
+    url: ""
   };
 
   handleNameChange(newHeader) {
@@ -34,6 +35,10 @@ class AdminComponent extends React.Component {
 
   handleDescriptionChange(newCaption) {
     this.projectToSave.caption = newCaption;
+  }
+
+  handleUrlChange(newUrl) {
+    this.projectToSave.url = newUrl;
   }
 
   getBaseImage(file) {
@@ -49,7 +54,8 @@ class AdminComponent extends React.Component {
       body: JSON.stringify({
         src: this.projectToSave.src,
         caption: this.projectToSave.caption,
-        header: this.projectToSave.header
+        header: this.projectToSave.header,
+        url: this.projectToSave.url
       })
     }).catch(function (error) {
       console.log(error)
@@ -94,6 +100,15 @@ class AdminComponent extends React.Component {
               name="project_description"
               id="project_description"
               onChange={(e) => this.handleDescriptionChange(e.target.value)}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="project_url">Url du projet :</Label>
+            <Input
+              type="text"
+              name="project_url"
+              id="project_url"
+              onChange={(e) => this.handleUrlChange(e.target.value)}
             />
           </FormGroup>
           <FormGroup>
