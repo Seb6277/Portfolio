@@ -70,7 +70,6 @@ client/.pnp.js
 
 # testing
 client/coverage
-client/src/assets/*.pdf
 
 # production
 client/build
