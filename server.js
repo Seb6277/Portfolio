@@ -24,7 +24,7 @@ App.use(express.static(path.join(__dirname, "client", "build")));
 // Define CORS
 App.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-  res.setHeader('Access-Control-Allow-Origin', 'https://portfolioseb.herokuapp.com:8000');
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE');
   next();
 });
