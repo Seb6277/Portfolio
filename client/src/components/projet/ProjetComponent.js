@@ -13,7 +13,7 @@ class ProjetComponent extends React.Component{
   }
 
   componentDidMount() {
-    fetch('http://localhost:1337/').then(response => {
+    fetch('http://localhost:8000/api').then(response => {
       return response.json()
     }).then(data => {
       this.setState({projects: data})
