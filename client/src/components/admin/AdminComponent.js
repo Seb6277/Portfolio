@@ -83,6 +83,7 @@ class AdminComponent extends React.Component {
   render() {
     return(
       <div className="admin_frame col-md-8 offset-md-2">
+        <h1>Administration</h1>
         <h2>Créer un projet</h2>
         <Form className="admin_form">
           <FormGroup>

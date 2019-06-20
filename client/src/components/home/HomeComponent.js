@@ -5,21 +5,21 @@ class HomeComponent extends React.Component{
   render() {
     return(
       <div className="content col-md-10 offset-md-1">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-            officia deserunt mollit anim id est laborum.
-          </p>
-          <img className="home_image" src={ProfilePic} alt="TODO"/>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-            officia deserunt mollit anim id est laborum.
-          </p>
+        <h1>Bienvenue</h1>
+        <p>
+          Bonjour est bienvenue sur mon portfolio ! <br/>
+          Ici vous trouverez une sélection de mes projets récent ainsi qu'une prise de contactpar formulaire et mon CV.
+        </p>
+        <img className="home_image" src={ProfilePic} alt="TODO"/>
+        <p>
+          A l'aise avec ES6, ES7 et les technologies autour de Javascript (ECMAScript) je touche parfois aussi au développement
+          PHP avec Symfony.
+        </p>
+        <p>
+          Certains projet ici seront des expérimentations, d'autre de vrais site... Vous pouvez toujours suivre mon Github qui
+          dispose de la grande majorité des projets en dépôt publique.
+        </p>
+        <p>Bonne visite !</p>
       </div>
     )
   }
