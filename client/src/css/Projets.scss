@@ -38,13 +38,28 @@
     border-radius: 10px;
     box-shadow: 5px 5px 5px grey;
     .carousel-item{
+      //TODO: Find a solution to center
       height: 500px;
+      //display: flex !important;
+      justify-content: center;
       img{
         height: 100%;
         width: auto;
-        opacity: 0.6;
       }
     }
+  }
+}
+
+.caption{
+  h4{
+    text-align: center;
+    margin-top: 30px;
+  }
+  a{
+    text-decoration: none;
+  }
+  p{
+    text-align: center;
   }
 }
 

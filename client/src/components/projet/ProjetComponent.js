@@ -70,27 +70,35 @@ class ProjetComponent extends React.Component{
   }
 
   render() {
+    const {activeIndex} = this.state
+    const items = this.state.projects
+
+    const slides = items.map((item) => {
+      return(
+        <CarouselItem
+          onExiting={this.onExiting}
+          on Exited={this.onExited}
+          key={item._id}
+        >
+          <img src={item.src} alt="" />
+        </CarouselItem>
+      )
+    })
+
+    //TODO: Make arrow working more than 1 time would be great ...
     return(
         <div className="projet_frame col-sm-12 col-md-8 offset-md-2">
           <h1>Projets</h1>
           <p>
             Ci-dessous vous trouverez un bréve description de chaque projet ainsi que la liste des liens direct vers ses derniers.
           </p>
-          <Carousel interval={0} activeIndex={this.state.activeIndex} previous={this.previous} next={this.next}>
-            <CarouselIndicators items={this.state.projects} activeIndex={this.state.activeIndex} onClickHandler={this.goToIndex}/>
-            {this.state.projects.map((item) => (
-              <CarouselItem
-                onExiting={this.onExiting}
-                on Exited={this.onExited}
-                key={item._id}
-              >
-                <img src={item.src} />
-              </CarouselItem>
-            ))}
-            <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} cssModule={{color: "#007bff"}}/>
+          <Carousel interval={0} activeIndex={activeIndex} previous={this.previous} next={this.next}>
+            <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex}/>
+            {slides}
+            <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous}/>
             <CarouselControl direction="next" directionText="Next" onClickHandler={this.next}/>
           </Carousel>
-          <div className="caption">
+          <div className="caption col-md-10 offset-md-1">
             {this.getCurrentCaption()}
           </div>
         </div>
