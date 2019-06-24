@@ -1,22 +1,20 @@
 import React from 'react'
 import {UncontrolledCarousel} from 'reactstrap'
+import axios from 'axios'
 
 class ProjetComponent extends React.Component{
 
   constructor(props){
     super(props)
 
-    // Creating structure of fake data
     this.state = {
       projects: []
     }
   }
 
   componentDidMount() {
-    fetch('http://localhost:8000/api').then(response => {
-      return response.json()
-    }).then(data => {
-      this.setState({projects: data})
+    axios.get('/api/projects/get').then(response => {
+      this.setState({projects: response.data})
     })
   }
 

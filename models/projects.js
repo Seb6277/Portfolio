@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-module.exports = new mongoose.Schema({
+const ProjectsSchema = new Schema({
   "src": {
     type: String,
     required: true,
@@ -22,3 +23,5 @@ module.exports = new mongoose.Schema({
     default: Date.now()
   }
 });
+
+module.exports = projects = mongoose.model('projects', ProjectsSchema);
