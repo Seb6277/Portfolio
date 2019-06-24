@@ -29,8 +29,9 @@ class ProjetComponent extends React.Component{
     })
   }
 
+  // Changing to true will block the carousel ...
   onExiting = () => {
-    this.animating = true
+    this.animating = false
   }
 
   onExited = () => {
@@ -85,19 +86,20 @@ class ProjetComponent extends React.Component{
       )
     })
 
-    //TODO: Make arrow working more than 1 time would be great ...
     return(
         <div className="projet_frame col-sm-12 col-md-8 offset-md-2">
           <h1>Projets</h1>
           <p>
             Ci-dessous vous trouverez un bréve description de chaque projet ainsi que la liste des liens direct vers ses derniers.
           </p>
-          <Carousel interval={0} activeIndex={activeIndex} previous={this.previous} next={this.next}>
-            <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex}/>
-            {slides}
-            <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous}/>
-            <CarouselControl direction="next" directionText="Next" onClickHandler={this.next}/>
-          </Carousel>
+          <div className="row carousel-container">
+            <Carousel className="col-md-8 offset-md-2 col-sm-12" interval={0} activeIndex={activeIndex} previous={this.previous} next={this.next}>
+              <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex}/>
+              {slides}
+              <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous}/>
+              <CarouselControl direction="next" directionText="Next" onClickHandler={this.next}/>
+            </Carousel>
+          </div>
           <div className="caption col-md-10 offset-md-1">
             {this.getCurrentCaption()}
           </div>
