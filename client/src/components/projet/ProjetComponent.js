@@ -93,7 +93,7 @@ class ProjetComponent extends React.Component{
             Ci-dessous vous trouverez un bréve description de chaque projet ainsi que la liste des liens direct vers ses derniers.
           </p>
           <div className="row carousel-container">
-            <Carousel className="col-md-8 offset-md-2 col-sm-12" interval={0} activeIndex={activeIndex} previous={this.previous} next={this.next}>
+            <Carousel className="col-md-8 offset-md-2" interval={0} activeIndex={activeIndex} previous={this.previous} next={this.next}>
               <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex}/>
               {slides}
               <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous}/>

@@ -3,15 +3,20 @@
     text-align: center;
     margin-top: 30px;
   }
-  .button_link{
-    margin-top: 30px;
-    display: flex;
-    justify-content: space-between;
-  }
 }
 
+.caption{
+   h4{
+     text-align: center;
+     margin-top: 30px;
+   }
+   a{
+     text-decoration: none;
+   }
+ }
+
 .carousel{
-  text-align: center;
+  margin-top: 30px;
   .carousel-control-prev-icon,
   .carousel-control-next-icon {
     height: 100px;
@@ -35,32 +40,21 @@
     font-size: 55px;
     color: blue;
   }
-  margin-top: 30px;
+
   .carousel-inner{
     border-radius: 10px;
     box-shadow: 5px 5px 5px grey;
-    .carousel-item{
-      height: 500px;
-      img{
-        height: 100%;
-        width: auto;
-      }
-    }
+    height: 500px;
+  }
+  img{
+    width: auto;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
-.caption{
-  h4{
-    text-align: center;
-    margin-top: 30px;
-  }
-  a{
-    text-decoration: none;
-  }
-  p{
-    text-align: center;
-  }
-}
+
 
 @media screen and (max-width: 640px){
   .projet_frame{
@@ -71,21 +65,10 @@
   }
 
   .carousel{
-    margin: 0;
     width: 100%;
     .carousel-inner{
       border-radius: 0;
       box-shadow: none;
-      .carousel-item{
-        height: 500px;
-        img{
-          height: 100% !important;
-          width: auto !important;
-        }
-      }
-    }
-    .carousel-caption{
-      display: block !important;
     }
   }
 }
