@@ -17,7 +17,7 @@ class App extends React.Component {
     return(
         <div className="App">
           <TitleBar/>
-          <div className="main_layer row">
+          <div className="main_layer">
             <Router>
               <Route exact path="/" component={HomeComponent}/>
               <Route path="/projets" component={ProjetComponent}/>
@@ -27,7 +27,7 @@ class App extends React.Component {
               <PrivateRoute exact path="/admin" component={AdminComponent}/>
             </Router>
           </div>
-          <div className="footer_row page-footer row">
+          <div className="footer_row page-footer">
             <footer className="footer row col-md-8 offset-md-2">
               <a className="github col-md-4 offset-md-3 row" href="https://github.com/Seb6277" target="_blank" rel="noreferrer noopener">
                 <div className="git-icon">
