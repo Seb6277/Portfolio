@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AdminComponent/> should render correctly 1`] = `
+<div
+  className="admin_frame col-md-8 offset-md-2"
+>
+  <h1>
+    Administration
+  </h1>
+  <h2>
+    Créer un projet
+  </h2>
+  <Form
+    className="admin_form"
+    tag="form"
+  >
+    <FormGroup
+      tag="div"
+    >
+      <Label
+        for="Project_name"
+        tag="label"
+        widths={
+          Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ]
+        }
+      >
+        Nom du projet :
+      </Label>
+      <Input
+        id="project_name"
+        name="project_name"
+        onChange={[Function]}
+        type="text"
+      />
+    </FormGroup>
+    <FormGroup
+      tag="div"
+    >
+      <Label
+        for="project_description"
+        tag="label"
+        widths={
+          Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ]
+        }
+      >
+        Description du projet :
+      </Label>
+      <Input
+        id="project_description"
+        name="project_description"
+        onChange={[Function]}
+        type="textarea"
+      />
+    </FormGroup>
+    <FormGroup
+      tag="div"
+    >
+      <Label
+        for="project_url"
+        tag="label"
+        widths={
+          Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ]
+        }
+      >
+        Url du projet :
+      </Label>
+      <Input
+        id="project_url"
+        name="project_url"
+        onChange={[Function]}
+        type="text"
+      />
+    </FormGroup>
+    <FormGroup
+      tag="div"
+    >
+      <Label
+        for="project_image"
+        tag="label"
+        widths={
+          Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ]
+        }
+      >
+        Image du projet :
+      </Label>
+      <br />
+      <div
+        className="filUpload btn btn-primary"
+      >
+        <t
+          id="project_image"
+          multiple={false}
+          name="project_image"
+          onDone={[Function]}
+          type="file"
+        />
+      </div>
+    </FormGroup>
+    <Button
+      className="submit_project"
+      color="secondary"
+      onClick={[Function]}
+      tag="button"
+      type="submit"
+    >
+      Envoyer
+    </Button>
+  </Form>
+  <hr />
+  <h2>
+    Supprimer un projet
+  </h2>
+</div>
+`;

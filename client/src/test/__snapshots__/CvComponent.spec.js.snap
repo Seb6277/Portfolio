@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CvComponent/> should match snapshot 1`] = `
+<div
+  className="cv_frame col-md-8 offset-md-2"
+>
+  <h1>
+    CV
+  </h1>
+  <p>
+    Vous pouvez télécharger mon CV par le liens ci-dessous:
+  </p>
+  <a
+    href="cv.pdf"
+  >
+    <img
+      alt="TODO"
+      src="document-download-solid.png"
+    />
+  </a>
+</div>
+`;
+
+exports[`<CvComponent/> should match snapshot 2`] = `
+<div
+  className="cv_frame col-md-8 offset-md-2"
+>
+  <h1>
+    CV
+  </h1>
+  <p>
+    Vous pouvez télécharger mon CV par le liens ci-dessous:
+  </p>
+  <a
+    href="cv.pdf"
+  >
+    <img
+      alt="TODO"
+      src="document-download-solid.png"
+    />
+  </a>
+</div>
+`;

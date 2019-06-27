@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ContactFormComponent/> should render correctly 1`] = `
+<Form
+  className="contact_form col-md-10 offset-md-1 col-sm-10 offset-sm-1"
+  tag="form"
+>
+  <FormGroup
+    tag="div"
+  >
+    <Label
+      for="email"
+      tag="label"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      E-mail :
+    </Label>
+    <Input
+      id="email"
+      name="email"
+      onChange={[Function]}
+      type="email"
+      valid={false}
+    />
+  </FormGroup>
+  <FormGroup
+    tag="div"
+  >
+    <Label
+      for="text"
+      tag="label"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      Message :
+    </Label>
+    <Input
+      id="text"
+      name="text"
+      onChange={[Function]}
+      type="textarea"
+      valid={false}
+    />
+  </FormGroup>
+  <div
+    className="captcha col-md-6 offset-md-2"
+  >
+    <AsyncScriptLoader(ReCAPTCHA)
+      onChange={[Function]}
+      sitekey="6LdIZqkUAAAAAO0mwtqMNSfGHdUjna0eFmFRrbg9"
+    />
+  </div>
+  <Button
+    color="secondary"
+    disabled={true}
+    onClick={[Function]}
+    tag="button"
+  >
+    Envoyer
+  </Button>
+</Form>
+`;
