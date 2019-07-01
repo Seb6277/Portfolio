@@ -15,7 +15,4 @@ cache:
 
 script:
   - npm run build
-  - cd ..
-  - node server.js
-  - cd client
   - npm run test
