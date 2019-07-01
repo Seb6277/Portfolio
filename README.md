@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Seb6277/portfolio.svg?branch=master)](https://travis-ci.org/Seb6277/portfolio)
+
 # portfolio
 personnal portfolio using MERN stack
 
