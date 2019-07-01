@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  - "10.15.3"
+
+install:
+  - npm install
+  - npm install --only=dev
+  - cd client
+  - npm install
+  - npm install --only=dev
+
+cache:
+  directories:
+    - node_modules
+
+script:
+  - npm run build
+  - npm run test

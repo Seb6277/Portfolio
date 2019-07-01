@@ -8,7 +8,7 @@ class ExistingProjectComponent extends React.Component{
         <Button
           className="suppress_button"
           color="danger"
-          onClick={() => {if (window.confirm('Are you sure ?')) this.props.deleteAction(this.props.id)}}
+          onClick={() => this.props.deleteAction(this.props.id)}
         >
           X
         </Button>

@@ -53,7 +53,7 @@ class ContactFormComponent extends React.Component{
         .then(function (response) {
           console.log('SUCCESS', response.status, response.text)
         }, function (err) {
-          console.log('FAILED...', err)
+          console.error('FAILED...', err)
         })
     } else {
       // Field are not valid input

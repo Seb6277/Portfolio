@@ -26,7 +26,7 @@ class ProjetComponent extends React.Component{
   componentDidMount() {
     axios.get('/api/projects/get').then(response => {
       this.setState({projects: response.data})
-    })
+    }).catch((error) => console.error(error))
   }
 
   // Changing to true will block the carousel ...

@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ExistingProjectComponent/> should call handleDeleteClick on click 1`] = `
+<div
+  className="suppress_project"
+>
+  <button
+    aria-label={null}
+    className="suppress_button btn btn-danger"
+    onClick={[Function]}
+    type="button"
+  >
+    X
+  </button>
+  <div
+    className="project_name"
+  >
+    test
+  </div>
+  <hr />
+</div>
+`;
+
+exports[`<ExistingProjectComponent/> should render correctly 1`] = `
+<div
+  className="suppress_project"
+>
+  <Button
+    className="suppress_button"
+    color="danger"
+    onClick={[Function]}
+    tag="button"
+  >
+    X
+  </Button>
+  <div
+    className="project_name"
+  />
+  <hr />
+</div>
+`;

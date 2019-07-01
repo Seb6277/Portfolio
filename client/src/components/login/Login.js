@@ -29,7 +29,7 @@ class Login extends React.Component {
       localStorage.setItem("authToken", "authToken")
       document.location.href="/admin"
     }).catch(error => {
-      console.log(error)
+      console.error(error)
     })
   }
 

@@ -56,19 +56,23 @@ class AdminComponent extends React.Component {
     ).then(() => {
       document.location.href="/admin"
     }).catch(function (error) {
-      console.log(error)
+      console.error(error)
     })
   };
 
   handleDeleteClick = (id) => {
-    axios.delete(`/api/projects/${id}`).then(() => {
-      const projects = [...this.state.projects]
-      const index = projects.findIndex((project) => project._id === id)
-      projects.splice(index, 1)
-      this.setState({projects: projects})
-    }).catch((error) => {
-      console.log(error)
-    })
+    if (window.confirm('Are you sure ?')) {
+      axios.delete(`/api/projects/${id}`).then(() => {
+        const projects = [...this.state.projects]
+        const index = projects.findIndex((project) => project._id === id)
+        projects.splice(index, 1)
+        this.setState({projects: projects})
+      }).catch((error) => {
+        console.error(error)
+      })
+    } else {
+      return
+    }
   }
 
   render() {
