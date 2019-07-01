@@ -5,11 +5,14 @@ node_js:
 install:
   - npm install
   - npm install --only=dev
-  - npm install client
   - cd client
+  - npm install
   - npm install --only=dev
 
+cache:
+  directories:
+    - node_modules
+
 script:
-  - cd client
-  - pwd
+  - npm run build
   - npm run test
