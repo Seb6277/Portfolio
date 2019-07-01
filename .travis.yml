@@ -8,8 +8,8 @@ install:
   - npm install client
   - cd client
   - npm install --only=dev
-  - cd ..
 
 script:
   - cd client
-  - npm test
+  - pwd
+  - npm run test
