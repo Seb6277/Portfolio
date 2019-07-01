@@ -15,10 +15,12 @@ class AdminComponent extends React.Component {
     this.handleDeleteClick.bind(this)
   }
 
-  componentDidMount() {
-    axios.get('/api/projects/get').then(response => {
-      this.setState({projects: response.data})
+  async componentDidMount() {
+    const response = await axios.get('/api/projects/get').catch(error => {
+      console.error(error)
+      return
     })
+    this.setState({projects: response.data})
   }
 
   projectToSave = {
