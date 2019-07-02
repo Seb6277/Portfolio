@@ -13,7 +13,8 @@ class ContactFormComponent extends React.Component{
       emailValid: false,
       validMessage: false,
       captchaValid: false,
-      toggleTextError: false
+      toggleTextError: false,
+      toggleMailError: false
     };
   }
 
@@ -55,11 +56,14 @@ class ContactFormComponent extends React.Component{
         }, function (err) {
           console.error('FAILED...', err)
         })
-    } else {
       // Field are not valid input
-      this.setState({toggleTextError: !this.state.toggleTextError})
+    } else if (!this.state.validMessage && this.state.emailValid) {
+      this.setState({toggleTextError: true})
+    } else if (!this.state.emailValid && this.state.validMessage) {
+      this.setState({toggleMailError: true})
+    } else {
+      this.setState({toggleMailError: true, toggleTextError: true})
     }
-
   };
 
   onCaptchaChange() {
@@ -74,17 +78,25 @@ class ContactFormComponent extends React.Component{
       textError = null
     }
 
+    let mailError = null;
+    if (this.state.toggleMailError) {
+      mailError = <Label className="textError">Email must contain '@' character.</Label>
+    } else {
+      mailError = null
+    }
+
     return(
       <Form className="contact_form col-md-10 offset-md-1 col-sm-10 offset-sm-1">
         <FormGroup>
           <Label for="email">E-mail :</Label>
           <Input
-            type="email"
+            type="text"
             name="email"
             id="email"
             onChange={(e) => this.handleMailChange(e.target.value)}
             valid={this.state.emailValid}
           />
+          {mailError}
         </FormGroup>
         <FormGroup>
           <Label for="text">Message :</Label>
