@@ -18,6 +18,7 @@ mongoose
   .catch(err => console.log(err));
 
 app.use('/api/projects', require('./routes/api/projects'));
+app.use('/api/auth', require('./routes/api/auth'));
 
 app.use(express.static('client/build'));
 
