@@ -1,5 +1,6 @@
 import React from 'react'
 import {Button, FormGroup, Form, Label} from 'reactstrap'
+import axios from 'axios'
 
 class Login extends React.Component {
   constructor(props) {
@@ -35,11 +36,18 @@ class Login extends React.Component {
 
   isValidCredential() {
     return new Promise((resolve, reject) => {
-      if (this.state.email === process.env.REACT_APP_MAIL && this.state.password === process.env.REACT_APP_PASSWD) {
-        resolve(true)
-      } else {
-        reject("Bad Credential")
-      }
+      axios.post('/api/auth/log', {
+        email: this.state.email,
+        passwd: this.state.password
+      })
+      .then((res) => {
+        if (res.data.auth === true) {
+          resolve(true)
+        } else {
+          reject("Bad credentials")
+        }
+      })
+      .catch((error) => console.log(error));
     })
   }
 
