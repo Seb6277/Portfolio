@@ -19,6 +19,7 @@ mongoose
 
 app.use('/api/projects', require('./routes/api/projects'));
 app.use('/api/auth', require('./routes/api/auth'));
+app.use('/api/mail', require('./routes/api/mail'));
 
 app.use(express.static('client/build'));
 
