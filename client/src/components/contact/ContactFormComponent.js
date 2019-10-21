@@ -1,6 +1,6 @@
 import React from 'react'
 import {Button, FormGroup, Form, Label, Input} from 'reactstrap'
-import * as emailjs from 'emailjs-com'
+import axios from 'axios';
 import ReCAPTCHA from 'react-google-recaptcha'
 
 class ContactFormComponent extends React.Component{
@@ -50,12 +50,14 @@ class ContactFormComponent extends React.Component{
     // Verify alla fields are Ready
     if (this.state.emailValid && this.state.validMessage) {
       // Send the mail
-      emailjs.send("gmail", process.env.REACT_APP_API_TEMPLATE, this.state, process.env.REACT_APP_API_USER)
-        .then(function (response) {
-          console.log('SUCCESS', response.status, response.text)
-        }, function (err) {
-          console.error('FAILED...', err)
-        })
+      axios.post("/api/mail/send_mail", {
+        userMail: this.state.senderEmail,
+        message: this.state.message_html
+      }).then(response => {
+        console.log(response.data)
+      }).catch(err => {
+        console.error(err)
+      });
       // Field are not valid input
     } else if (!this.state.validMessage && this.state.emailValid) {
       this.setState({toggleTextError: true})
